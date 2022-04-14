@@ -2,7 +2,6 @@ const $horizontal = document.querySelector(".horizontal");
 const $vertical = document.querySelector(".vertical");
 const $circle = document.querySelector(".circle");
 const $tag = document.querySelector(".tag");
-
 document.addEventListener("mousemove", (e) => {
   const x = e.clientX;
   const y = e.clientY;
