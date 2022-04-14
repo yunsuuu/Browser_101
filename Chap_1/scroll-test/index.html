@@ -4,15 +4,69 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find Rabbit</title>
+  <title>Find a rabbit</title>
   <style>
     body {
-      background-color: lightcoral;
+      background-color: beige;
       text-align: center;
+    }
+    
+    h2 {
+      padding: 20px;
+      margin: 0;
+    }
+
+    button {
+      padding: 8px;
+      margin-bottom: 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: lightpink;
+      color: white;
+      font-size: 12px;
+    }
+
+    .img-wrap {
+      display: flex;
+      align-items: center;
+      flex-flow: column;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      padding: 10px;
+      margin-bottom: 6px;
+      border-radius: 20px;
+    }
+
+    .special {
+      background-color: lightpink;
     }
   </style>
 </head>
 <body>
-  <h3>토끼를 찾아라!</h3>
+  <h2>토끼를 찾아라!</h2>
+  <button>Find a rabbit</button>
+  <div class="img-wrap">
+    <img src="/Chap_1/scroll-test/img/carrot.png">
+    <img src="/Chap_1/scroll-test/img/carrot.png">
+    <img src="/Chap_1/scroll-test/img/carrot.png">
+    <img src="/Chap_1/scroll-test/img/carrot.png">
+    <img class="special" src="/Chap_1/scroll-test/img/rabbit.png">
+    <img src="/Chap_1/scroll-test/img/carrot.png">
+    <img src="/Chap_1/scroll-test/img/carrot.png">
+    <img src="/Chap_1/scroll-test/img/carrot.png">
+    <img src="/Chap_1/scroll-test/img/carrot.png">
+  </div>
+  
+  <script>
+    const $btn = document.querySelector("button");
+    const $rabbit = document.querySelector(".special");
+    $btn.addEventListener("click", () => {
+      $rabbit.scrollIntoView({behavior: "smooth", block: "center"});
+    });
+  </script>
 </body>
 </html>
