@@ -1,3 +1,5 @@
+// 사용자의 인터렉션이 많이 발생하는 웹앱일수록 성능에 유의
+// top, left 등으로 위치이동하는 것보다 transform(translate)로 위치이동하면 성능이 높아짐
 const $horizontal = document.querySelector(".horizontal");
 const $vertical = document.querySelector(".vertical");
 const $circle = document.querySelector(".circle");

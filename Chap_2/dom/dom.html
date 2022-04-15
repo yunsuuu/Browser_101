@@ -43,5 +43,13 @@
       <h3>Don't forget to code your dream</h3>
     </section>
     <span>Hello World!</span>
+    <script>
+      const section = document.querySelector("section");
+      const h2 = document.createElement("h2");
+      const h3 = document.querySelector("h3");
+      h2.setAttribute("class", "title");
+      h2.textContent = "This is title";
+      section.insertBefore(h2, h3);
+    </script>
   </body>
 </html>
