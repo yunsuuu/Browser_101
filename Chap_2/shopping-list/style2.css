@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 800px;
+  text-align: center;
+  background-color: lightblue;
+}
+
+ul {
+  padding: 0;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.list {
+  width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.header {
+  height: 50px;
+  color: lightblue;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.items {
+  height: 200px;
+  overflow-y: auto;
+  /* overflow-y: list가 많아지면 자동으로 스크롤바 생성 */
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+}
+
+.item-delete,
+.footer-btn {
+  color: lightblue;
+  font-size: 16px;
+  transition: all .2s ease-in;
+}
+
+.item-delete:hover,
+.footer-btn:hover {
+  opacity: .3;
+  transform: scale(1.1);
+}
+
+.footer-input {
+  width: 100%;
+  height: 36px;
+  padding: 0 16px;
+  margin: 12px 0;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(240, 240, 240);
+}
+
+.footer-input:focus {
+  outline: none;
+}
