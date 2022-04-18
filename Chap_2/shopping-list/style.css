@@ -1,50 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: lightblue;
-  padding: 40px;
-  margin: 0;
-}
-
-section {
-  width: 60%;
-  padding: 50px;
-  background-color: white;
+  height: 800px;
   text-align: center;
-  margin: 0 auto;
-  border-radius: 20px;
+  background-color: lightblue;
 }
 
-h2 {
-  margin: 0;
+ul {
   padding: 0;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.list {
+  width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.header {
+  height: 50px;
   color: lightblue;
   font-size: 40px;
   font-weight: 800;
 }
 
-input {
-  width: 90%;
-  padding: 12px;
-  margin: 20px 0;
-  font-size: 12px;
+.items {
+  height: 200px;
+  overflow-y: auto;
+  /* overflow-y: list가 많아지면 자동으로 스크롤바 생성 */
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+}
+
+.item-delete,
+.footer-btn {
+  color: lightblue;
+  font-size: 16px;
+  transition: all .2s ease-in;
+}
+
+.item-delete:hover,
+.footer-btn:hover {
+  opacity: .3;
+  transform: scale(1.1);
+}
+
+.footer-input {
+  width: 100%;
+  height: 36px;
+  padding: 0 16px;
+  margin: 12px 0;
+  font-size: 14px;
   border: none;
-  border-radius: 20px;
-  background-color: rgb(230, 230, 230);
+  border-radius: 10px;
+  background-color: rgb(240, 240, 240);
 }
 
-input::placeholder {
-  color: white;
-}
-
-input:focus::placeholder {
-  color: transparent;
-}
-
-button {
-  width: 80px;
-  padding: 6px;
-  font-size: 12px;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  background-color: lightblue;
+.footer-input:focus {
+  outline: none;
 }
