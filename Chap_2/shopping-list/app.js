@@ -3,28 +3,23 @@
 
 const $ul = document.querySelector(".items");
 const $input = document.querySelector(".footer-input");
-const $btn = document.querySelector(".footer-btn");
+const $addBtn = document.querySelector(".footer-btn");
 
+let id = 0;
 function createLi(text) {
   const itemList = document.createElement("li");
-  itemList.classList = "item-list"
-
-  const itemDiv = document.createElement("div");
-  itemDiv.classList = "item";
-  const itemSpan = document.createElement("span");
-  itemSpan.classList = "item-name";
-  itemSpan.innerText = text;
-  const deleteBtn = document.createElement("button");
-  deleteBtn.classList = "item-delete";
-  deleteBtn.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
-  deleteBtn.addEventListener("click", () => {
-    $ul.removeChild(itemList);
-  });
-
-  itemDiv.append(itemSpan, deleteBtn);
-  // itemDiv.appendChild(deleteBtn);
-
-  itemList.appendChild(itemDiv);
+  itemList.classList.add("item-list");
+  itemList.setAttribute("data-id", id);
+  // <li class="item-list" data-id=${id}></li>
+  itemList.innerHTML = `
+    <div class="item">
+      <span class="item-name">${text}</span>
+      <button class="item-delete">
+        <i class="fa-solid fa-trash-can" data-id=${id}></i>
+      </button>
+    </div>
+  `;
+  id++;
   return itemList;
 }
 
@@ -49,6 +44,15 @@ $input.addEventListener("keypress", (e) => {
     addList();
   }
 })
-$btn.addEventListener("click", () => {
+$addBtn.addEventListener("click", (e) => {
   addList();
+});
+
+$ul.addEventListener("click", (e) => {
+  const id = e.target.dataset.id;
+  console.log(id);
+  if(id) { // id가 존재할 때
+   const toBeDeleted = document.querySelector(`.item-list[data-id="${id}"]`);
+   toBeDeleted.remove();
+  }
 });
