@@ -3,7 +3,7 @@
 }
 
 body {
-  height: 800px;
+  /* height: 800px; */
   padding-top: 200px;
   text-align: center;
   background-color: lightblue;
@@ -47,14 +47,14 @@ button {
   padding: 10px 50px;
 }
 
-.item-delete,
+.delete-btn,
 .footer-btn {
   color: lightblue;
   font-size: 16px;
   transition: all .2s ease-in;
 }
 
-.item-delete:hover,
+.delete-btn:hover,
 .footer-btn:hover {
   opacity: .3;
   transform: scale(1.1);
