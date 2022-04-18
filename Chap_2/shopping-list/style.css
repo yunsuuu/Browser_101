@@ -4,6 +4,7 @@
 
 body {
   height: 800px;
+  padding-top: 200px;
   text-align: center;
   background-color: lightblue;
 }
