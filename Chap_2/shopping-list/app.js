@@ -5,10 +5,12 @@
 // 5. 휴지통 아이콘 클릭시 list 삭제
 
 const $ul = document.querySelector(".items");
+const $form = document.querySelector(".form");
 const $input = document.querySelector(".footer-input");
 const $btn = document.querySelector(".footer-btn");
 
 let id = 0;
+
 function createLi(text) {
   const li = document.createElement("li");
   li.classList.add("item-list");
@@ -51,16 +53,18 @@ $ul.addEventListener("click", (e) => {
     }
 });
 
-// 엔터키 이벤트
-$input.addEventListener("keypress", (e) => {
-  if ($input.value === "") {
-    return;
-  }
-
-  if (e.key === "Enter") {
-    addList();
-  }
+$form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  addList();
 });
+
+// 엔터키 이벤트
+// keyup - 키보드에서 손가락을 뗐을 때
+// $input.addEventListener("keydown", (e) => {
+//   if (e.key === "Enter") {
+//     addList();
+//   }
+// });
 
 // 버튼클릭 이벤트
 $btn.addEventListener("click", () => {
