@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.bg-img {
+  /* position: relative; */
+  height: 100vh;
+  background-image: url("/Chap_5/img/background.png");
+  background-size: cover;
+}
+
+.game-top-ui {
+  /* border: 2px solid red; */
+  height: 200px;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 40px;
+}
+
+.play-btn {
+  padding: 8px 18px;
+  font-size: 16px;
+  border: 2px solid lightgray;
+  border-radius: 8px;
+  background-color: beige;
+}
+
+.game-timer {
+  font-size: 30px;
+  margin: 12px 0;
+}
+
+.game-score {
+  width: 60px;
+  height: 60px;
+  line-height: 55px;
+  display: inline-block;
+  font-size: 24px;
+  border: 2px solid lightgray;
+  border-width: 3px;
+  border-radius: 50%;
+  background-color: antiquewhite;
+}
