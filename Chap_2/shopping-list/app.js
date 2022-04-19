@@ -8,38 +8,48 @@ const $ul = document.querySelector(".items");
 const $input = document.querySelector(".footer-input");
 const $btn = document.querySelector(".footer-btn");
 
-function deleteItem(e) {
-  console.log(e);
-}
-
+let id = 0;
 function createLi(text) {
   const li = document.createElement("li");
   li.classList.add("item-list");
+  li.setAttribute("data-id", id);
+  // <li class="item-list" data-id="id"></li>
   li.innerHTML = `
     <div class="item">
       <span class="item-name">${text}</span>
       <button class="delete-btn">
-        <i class="fa-solid fa-trash-can"></i>
+        <i class="fa-solid fa-trash-can" data-id=${id}></i>
       </button>
     </div>
   `;
-
+  id++;
   // 중요!
   return li; // 화면에 출력하려면 return 필요
 }
 
 function addList() {
   const value = $input.value;
-  // console.log(value);
+  if(value === ""){
+    $input.focus();
+    return;
+  }
+
   const itemList = createLi(value);
+  $ul.append(itemList);
+  itemList.scrollIntoView({block: "center"});
+
   $input.value = "";
   $input.focus();
-
-  $ul.append(itemList);
 }
 
-// 휴지통 클릭 이벤트(아이템 삭제)
-$ul.addEventListener("click", deleteItem);
+// 아이템삭제 이벤트(ul 태그에 위임함으로써 이벤트를 한번만 발생시킴)
+$ul.addEventListener("click", (e) => {
+   const id = e.target.dataset.id;
+   if(id) {
+     const toBeDeleted = document.querySelector(`.item-list[data-id="${id}"]`);
+     toBeDeleted.remove();
+    }
+});
 
 // 엔터키 이벤트
 $input.addEventListener("keypress", (e) => {
@@ -47,15 +57,15 @@ $input.addEventListener("keypress", (e) => {
     return;
   }
 
-  if (e.keyCode === 13) {
+  if (e.key === "Enter") {
     addList();
   }
 });
 
-// 버튼클릭이벤트
+// 버튼클릭 이벤트
 $btn.addEventListener("click", () => {
   if ($input.value === "") {
-    $input.focus();
+    // $input.focus();
     return;
   }
   addList();
