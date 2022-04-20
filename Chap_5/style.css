@@ -12,7 +12,6 @@
 }
 
 .game-top-ui {
-  /* border: 2px solid red; */
   height: 200px;
   text-align: center;
   padding-top: 20px;
@@ -25,6 +24,11 @@
   border: 2px solid lightgray;
   border-radius: 8px;
   background-color: beige;
+}
+
+.play-btn:hover {
+  cursor: pointer;
+  opacity: .8;
 }
 
 .game-timer {
@@ -42,4 +46,10 @@
   border-width: 3px;
   border-radius: 50%;
   background-color: antiquewhite;
+}
+
+.game-field {
+  width: 100%;
+  height: 100%;
+  border: 2px solid red;
 }
