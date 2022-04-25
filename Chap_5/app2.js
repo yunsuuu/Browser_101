@@ -5,7 +5,7 @@ const CARROT_SIZE = 80; // width=80, heigth=80
 // 순수한 게임필드 범위를 벗어나서 아이템이 만들어지기 때문에 당근 이미지의 사이즈 체크 후 사이즈 만큼 게임필드 너비에서 빼줌
 const CARROT_COUNT = 5;
 const BUG_COUNT = 5;
-const GAME_DURATION_SEC = 10;
+const GAME_DURATION_SEC = 5;
 
 const $gameField = document.querySelector(".game-field");
 // getBoundingClientRect() - 원하는 요소의 위치값 구하기
@@ -27,14 +27,24 @@ $playBtn.addEventListener("click", () => {
   started = !started; // 버튼클릭하는 순간 started가 반대로 전환
 });
 
+function updateTimerText(time) { // time = remainingTimeSec
+  const minutes = String(Math.floor(time / 60)).padStart(2, "0");
+  // time = 5 ㅣ 5 / 60 = 0 ㅣ 0minutes
+  // time = 65 ㅣ 65 / 60 = 1 ㅣ 1minutes 
+  const seconds = String(Math.floor(time % 60)).padStart(2, "0");
+  // time = 65 ㅣ 65 % 60 = 5(나머지)
+  $gameTimer.innerText = `${minutes} : ${seconds}`;
+}
+
 function runTimer() {
   let remainingTimeSec = GAME_DURATION_SEC; // 10초
-  updateTimerText();
+  updateTimerText(remainingTimeSec);
   timer = setInterval(() => {
-    if(remainingTimeSec <= 0) {
+    if(remainingTimeSec <= 0) { // 게임종료
       clearInterval(timer);
       return;
     }
+    updateTimerText(--remainingTimeSec); // 게임이 아직 진행 중이라면
   }, 1000);
 }
 
