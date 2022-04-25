@@ -5,6 +5,7 @@ const CARROT_SIZE = 80; // width=80, heigth=80
 // 순수한 게임필드 범위를 벗어나서 아이템이 만들어지기 때문에 당근 이미지의 사이즈 체크 후 사이즈 만큼 게임필드 너비에서 빼줌
 const CARROT_COUNT = 5;
 const BUG_COUNT = 5;
+const GAME_DURATION_SEC = 10;
 
 const $gameField = document.querySelector(".game-field");
 // getBoundingClientRect() - 원하는 요소의 위치값 구하기
@@ -26,6 +27,22 @@ $playBtn.addEventListener("click", () => {
   started = !started; // 버튼클릭하는 순간 started가 반대로 전환
 });
 
+function runTimer() {
+  let remainingTimeSec = GAME_DURATION_SEC; // 10초
+  updateTimerText();
+  timer = setInterval(() => {
+    if(remainingTimeSec <= 0) {
+      clearInterval(timer);
+      return;
+    }
+  }, 1000);
+}
+
+function showTimerAndScore() {
+  $gameTimer.style.visibility = "visible";
+  $gameScore.style.visibility = "visible";
+}
+
 function showStopButton() {
   const target = $playBtn.querySelector(".fa-play");
   target.classList.add("fa-stop");
@@ -35,6 +52,8 @@ function showStopButton() {
 function startGame() {
   initGame();
   showStopButton();
+  showTimerAndScore();
+  runTimer();
 }
 
 function stopGame() {
@@ -81,6 +100,9 @@ function addItem(className, count, imgPath) {
 }
 
 function initGame() {
+   // 플레이버튼 클릭할 때마다 필드 리셋 상태로 초기화
+  $gameField.innerHTML = "";
+  $gameScore.innerText = CARROT_COUNT;
   // addItem()으로 벌레와 당근을 생성한 뒤 game-field에 추가
   addItem("carrot", CARROT_COUNT, "img/carrot.png");
   addItem("bug", CARROT_COUNT, "img/bug.png");
