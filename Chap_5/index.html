@@ -4,23 +4,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="style.css" rel="stylesheet">
-  <script src="app.js" defer></script>
-  <script src="https://kit.fontawesome.com/6925fa6480.js" crossorigin="anonymous"></script>
   <title>Find Carrot</title>
+  <link href="style.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/6925fa6480.js" crossorigin="anonymous"></script>
+  <script src="app.js" defer></script>
+  <!-- defer을 쓰지 않으면 html이 준비되기 이전에 스크립트가 실행되기 때문에 오류 발생 -->
 </head>
 <body>
-  <section clas="game">
+  <section class="game">
     <header class="game-header">
       <button class="play-btn">
         <i class="fas fa-play"></i>
       </button>
-      <div class="game-timer">10:00</div>
-      <div class="game-score">10</div>
+      <span class="game-timer"></span>
+      <span class="game-score"></span>
     </header>
-    <div class="game-field"></div>
-    
+    <section class="game-field"></section>
   </section>
-  <section class="pop-up"></section>
+  <section class="pop-up pop-up-hide">
+    <button class="refresh-btn">
+      <i class="fa-solid fa-arrow-rotate-right"></i>
+    </button>
+    <span class="refresh-msg">Hello</span>
+  </section>
 </body>
 </html>
