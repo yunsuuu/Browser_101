@@ -3,9 +3,11 @@
 
 const CARROT_SIZE = 80; // width=80, heigth=80
 // 순수한 게임필드 범위를 벗어나서 아이템이 만들어지기 때문에 당근 이미지의 사이즈 체크 후 사이즈 만큼 게임필드 너비에서 빼줌
-const CARROT_COUNT = 20;
-const BUG_COUNT = 20;
 const GAME_DURATION_SEC = 10;
+let CARROT_COUNT;
+let BUG_COUNT;
+
+const $form = document.querySelector(".form");
 
 const $playBtn = document.querySelector(".play-btn");
 const $gameTimer = document.querySelector(".game-timer");
@@ -22,15 +24,26 @@ let started = false; // 게임실행 여부를 확인하는 변수
 let score = 0; // 최종 점수를 기억하는 변수
 let timer = undefined; // 게임 시작 전 undefined, 게임 시작 후 타이머가 기억되고 있어야 함
 
-// 이벤트 위임으로, 아이콘 각각에 클릭이벤트 등록하지 않고, 게임필드 자체에 클릭이벤트 등록하여 클릭된 아이콘이 어떤 것인지에 따라 결과 다르게 표기
-$gameField.addEventListener("click", onFieldClick);
-$playBtn.addEventListener("click", () => {
+// $form.addEventListener("submit", onSubmit);
+$form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  
+  
   if(started) { // 게임이 진행 중인 상황에서 플레이 버튼 클릭시
     stopGame(); // 게임중지
   } else {
     startGame(); // 게임실행
   }
 });
+// 이벤트 위임으로, 아이콘 각각에 클릭이벤트 등록하지 않고, 부모요소인 게임필드에 이벤트 등록
+$gameField.addEventListener("click", onFieldClick);
+// $playBtn.addEventListener("click", () => {
+//   if(started) { // 게임이 진행 중인 상황에서 플레이 버튼 클릭시
+//     stopGame(); // 게임중지
+//   } else {
+//     startGame(); // 게임실행
+//   }
+// });
 $popUpBtn.addEventListener("click", () => {
   startGame();
   hidePopUp();
@@ -170,4 +183,9 @@ function initGame() {
   addItem("carrot", CARROT_COUNT, "img/carrot.png");
   addItem("bug", BUG_COUNT, "img/bug.png");
 }
+
+function onSubmit(e) {
+  e.preventDefault();
+
+  initGame();
 }
