@@ -120,3 +120,14 @@ button {
   font-size: 28px;
   margin-top: 20px;
 }
+
+.carrot,
+.bug {
+  transition: transform 200ms ease-in;
+}
+
+.carrot:hover,
+.bug:hover {
+  transform: scale(1.1);
+  opacity: .8;
+}
