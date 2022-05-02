@@ -1,5 +1,6 @@
 // 엄격모드 - 의도치 않은 오류를 방지 
 "use strict";
+import PopUp from "./pop-up.js";
 
 const CARROT_SIZE = 80; // width=80, heigth=80
 // 순수한 게임필드 범위를 벗어나서 아이템이 만들어지기 때문에 당근 이미지의 사이즈 체크 후 사이즈 만큼 게임필드 너비에서 빼줌
@@ -14,9 +15,13 @@ const $gameField = document.querySelector(".game-field");
 const gameFieldRect = $gameField.getBoundingClientRect();
 // getBoundingClientRect() - 원하는 요소의 위치값 구하기
 
-const $popUp = document.querySelector(".pop-up");
-const $popUpBtn = document.querySelector(".refresh-btn");
-const $popUpMsg = document.querySelector(".refresh-msg");
+// const $popUp = document.querySelector(".pop-up");
+// const $popUpBtn = document.querySelector(".pop-up-btn");
+// const $popUpMsg = document.querySelector(".pop-up-msg");
+
+// 클래스로 만든 PopUp()을 새로운 변수로 지정
+const gameFinishBanner = new PopUp();
+gameFinishBanner.setClickListener(startGame);
 
 let started = false; // 게임실행 여부를 확인하는 변수
 let score = 0; // 최종 점수를 기억하는 변수
@@ -30,10 +35,6 @@ $playBtn.addEventListener("click", () => {
   } else {
     startGame(); // 게임실행
   }
-});
-$popUpBtn.addEventListener("click", () => {
-  startGame();
-  hidePopUp();
 });
 
 function updateTimerText(time) { // time = remainingTimeSec
@@ -69,14 +70,14 @@ function showTimerAndScore() {
   $gameScore.style.visibility = "visible";
 }
 
-function hidePopUp() {
-  $popUp.classList.add("pop-up-hide");
-}
+// function hidePopUp() {
+//   $popUp.classList.add("pop-up-hide");
+// }
 
-function showPopUp(text) {
-  $popUpMsg.innerText = text;
-  $popUp.classList.remove("pop-up-hide");
-}
+// function showPopUp(text) {
+//   $popUpMsg.innerText = text;
+//   $popUp.classList.remove("pop-up-hide");
+// }
 
 function hidePlayBtn() {
   $playBtn.style.visibility = "hidden";
@@ -135,14 +136,14 @@ function stopGame() {
   started = false;
   stopGameTimer();
   hidePlayBtn();
-  showPopUp("REPLAY?");
+  gameFinishBanner.showPopUp("REPLAY?");
 }
 
 function finishGame(win) { // 승리했는지 패배했는지
   started = false;
   hidePlayBtn();
   stopGameTimer();
-  showPopUp(win ? "You Won! 🥳" : "You Lost! 🥺");
+  gameFinishBanner.showPopUp(win ? "You Won! 🥳" : "You Lost! 🥺");
 }
 
 function onFieldClick(e) {
@@ -169,5 +170,4 @@ function initGame() {
   // addItem()으로 벌레와 당근을 생성한 뒤 game-field에 추가
   addItem("carrot", CARROT_COUNT, "img/carrot.png");
   addItem("bug", BUG_COUNT, "img/bug.png");
-}
 }

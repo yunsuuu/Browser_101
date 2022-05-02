@@ -102,7 +102,7 @@ button {
   display: none;
 }
 
-.refresh-btn {
+.pop-up-btn {
   width: 50px;
   height: 50px;
   font-size: 24px;
@@ -111,11 +111,11 @@ button {
   transition: transform 300ms ease-in;
 }
 
-.refresh-btn:hover {
+.pop-up-btn:hover {
   transform: scale(1.1);
 }
 
-.refresh-msg {
+.pop-up-msg {
   display: block;
   font-size: 28px;
   margin-top: 20px;
