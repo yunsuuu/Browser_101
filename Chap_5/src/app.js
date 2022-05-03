@@ -7,13 +7,31 @@ import PopUp from "./pop-up.js";
 // const BUG_COUNT = 5;
 // const GAME_DURATION_SEC = 10;
 
+// 게임 관련 클래스
+const game = new Game(3, 3, 5);
+game.setGameStopListener(reason => {
+  let message; 
+  switch(reason) {
+    case "cancel":
+      message = "REPLAY❓";
+      break;
+    case "win":
+      message = "YOU WON 🥳";
+      break;
+    case "lose":
+      message = "YOU LOST 🥺";
+      break;
+      default: // 위의 세 경우 아닐 때 에러 메시지 던짐
+        throw new Error("not valid reason");
+  }
+  gameFinishBanner.showPopUp(message);
+});
+
 // 팝업창 관련 클래스
 const gameFinishBanner = new PopUp();
-gameFinishBanner.setClickListener(onclick);
-
-// 게임 관련 클래스
-const game = new Game(5, 5, 10);
-game.setGameStopListener(console.log("hi"));
+gameFinishBanner.setClickListener(() => {
+  game.start();
+});
 
 // const $playBtn = document.querySelector(".play-btn");
 // const $gameTimer = document.querySelector(".game-timer");

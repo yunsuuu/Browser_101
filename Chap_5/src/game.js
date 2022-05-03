@@ -30,7 +30,7 @@ export default class Game {
     this.timer = undefined;
   }
 
-  // 게임이 끝나면 알려주는 콜백 함수를 받아오는 역할 
+  // 게임종료를 알리는 콜백함수를 불러옴 
   setGameStopListener(onGameStop) {
     this.onGameStop = onGameStop;
   }
