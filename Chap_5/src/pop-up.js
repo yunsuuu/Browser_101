@@ -9,7 +9,7 @@ export default class PopUp {
     this.$popUpBtn = document.querySelector(".pop-up-btn");
     this.$popUpMsg = document.querySelector(".pop-up-msg");
     this.$popUpBtn.addEventListener("click", () => {
-      this.onClick && this.onClick(); 
+      this.onClick  && this.onClick(); 
       // PopUp 클래스에 onClick이라는 맴버변수가 있으면 onClick() 함수 실행
       this.hide();
       // 팝업버튼 클릭시 팝업창 닫기
