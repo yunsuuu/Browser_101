@@ -1,24 +1,30 @@
-// 엄격모드 - 의도치 않은 오류를 방지 
-"use strict";
-import Game from "./game.js";
+"use strict"; // 엄격모드 - 의도치 않은 오류를 방지 
+
+import { GameBuilder, Reason } from "./game.js";
 import PopUp from "./pop-up.js";
 
-// const CARROT_COUNT = 5;
-// const BUG_COUNT = 5;
-// const GAME_DURATION_SEC = 10;
+// 팝업창생성클래스
+const gameFinishBanner = new PopUp();
+// 게임생성클래스
+const game = new GameBuilder()
+// 사용자가 지정한 값이 한눈에 들어옴
+  .gameDuration(5)
+  .carrotCount(3)
+  .bugCount(3)
+  .build();
 
-// 게임 관련 클래스
-const game = new Game(3, 3, 5);
+
+// 게임종료이유에 따라 팝업창 메시지 띄움
 game.setGameStopListener(reason => {
-  let message; 
+  let message;
   switch(reason) {
-    case "cancel":
+    case Reason.cancel:
       message = "REPLAY❓";
       break;
-    case "win":
+    case Reason.win:
       message = "YOU WON 🥳";
       break;
-    case "lose":
+    case Reason.lose:
       message = "YOU LOST 🥺";
       break;
       default: // 위의 세 경우 아닐 때 에러 메시지 던짐
@@ -27,11 +33,14 @@ game.setGameStopListener(reason => {
   gameFinishBanner.showPopUp(message);
 });
 
-// 팝업창 관련 클래스
-const gameFinishBanner = new PopUp();
+// 팝업창 클릭시 게임 재실행
 gameFinishBanner.setClickListener(() => {
   game.start();
 });
+
+// const CARROT_COUNT = 5;
+// const BUG_COUNT = 5;
+// const GAME_DURATION_SEC = 10;
 
 // const $playBtn = document.querySelector(".play-btn");
 // const $gameTimer = document.querySelector(".game-timer");
