@@ -3,8 +3,12 @@
 
 const CARROT_SIZE = 80;
 
-export default class Field {
-  // 당근총합, 벌레총합
+export const ItemType = Object.freeze({
+  carrot: "carrot",
+  bug: "bug",
+})
+
+export class Field {
   constructor(carrotCount, bugCount) {
     this.carrotCount = carrotCount;
     this.bugCount = bugCount;
@@ -16,8 +20,8 @@ export default class Field {
   // 필드를 초기화하고 아이템을 추가하는 역할
   init() {
     this.$gameField.innerHTML = "";
-    this.addItem("carrot", this.carrotCount, "img/carrot.png");
-    this.addItem("bug", this.bugCount, "img/bug.png");
+    this.addItem(ItemType.carrot, this.carrotCount, `img/${ItemType.carrot}.png`);
+    this.addItem(ItemType.bug, this.bugCount, `img/${ItemType.bug}.png`);
   }
 
   setClickListener(onItemClick) {
@@ -47,12 +51,12 @@ export default class Field {
   // 클래스 내부 함수를 어딘가로 전달할 때 클래스 정보가 사라지기 때문에 정보를 전달해 주기 위해 onClick을 변수로 만들어줌 (바인딩 작업)
   onClick = (e) => {
     const target = e.target;
-    if(target.className === "carrot"){
+    if(target.className === ItemType.carrot){
       target.remove();
-      this.onItemClick && this.onItemClick("carrot");
-    } else if(target.className === "bug"){
+      this.onItemClick && this.onItemClick(ItemType.carrot);
+    } else if(target.className === ItemType.bug){
       target.remove();
-      this.onItemClick && this.onItemClick("bug");
+      this.onItemClick && this.onItemClick(ItemType.bug);
     }
   }
 }

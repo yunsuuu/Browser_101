@@ -1,5 +1,4 @@
 "use strict"; // 엄격모드 - 의도치 않은 오류를 방지 
-
 import { GameBuilder, Reason } from "./game.js";
 import PopUp from "./pop-up.js";
 
@@ -37,7 +36,7 @@ game.setGameStopListener(reason => {
 gameFinishBanner.setClickListener(() => {
   game.start();
 });
-
+ 
 // const CARROT_COUNT = 5;
 // const BUG_COUNT = 5;
 // const GAME_DURATION_SEC = 10;
