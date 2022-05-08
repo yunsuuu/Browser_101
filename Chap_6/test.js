@@ -1,5 +1,5 @@
 // ** 클릭이벤트리스너, 태스크큐 개념
-// document.body.appendChild(h3) 작성 순서 상관없음
+// document.body.appendChild(h3) 작성 순서 상관없음g
 // 1. 클릭이벤트리스너 등록에 따른 콜백함수(코드블럭 내부 모든 코드)는 태스크큐로 들어감
 // 2. 태스크큐에 들어간 콜백함수는 이벤트루프가 돌다가 발견하여 콜스택 이동시킴
 // 3. 콜스택으로 이동한 콜백함수 내부 모든 코드가 수행될 때까지 이벤트루프는 콜스택에서 대기
@@ -63,7 +63,6 @@
 const $btn = document.querySelector("button");
 function onClick() {
   // requestAnimationFrame - 비동기 함수로서, CSS 애니메이션으로는 처리가 어렵거나 canvas, SVG 등의 애니메이션을 직접 구현하고자 할 때 사용
-  // 
   requestAnimationFrame
 }
 $btn.addEventListener("click", () => {
