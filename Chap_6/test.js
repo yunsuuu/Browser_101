@@ -43,27 +43,17 @@
 
 // 마이크로 태스크 큐 - 새롭게 만들어진 콜백을 계속 추가 가능
 // 예제3
-// const $btn = document.querySelector("button");
-// function onClick() {
-//   console.log("click");
-//   // Promise - 주로 서버에서 받아온 데이터를 화면에 표시
-//   // Promise 콜백은 마이크로 태스크로 이동
-//   Promise.resolve(0)
-//   // resolve라는 API를 이용, 0이라는 값을 리턴 
-//   .then(() => { // 정상적으로 0이라는 값이 리턴되면
-//     console.log("then");
-//     onClick();
-//   });
-// }
-// $btn.addEventListener("click", () => {
-//   onClick();
-// });
-
-// 예제
 const $btn = document.querySelector("button");
 function onClick() {
-  // requestAnimationFrame - 비동기 함수로서, CSS 애니메이션으로는 처리가 어렵거나 canvas, SVG 등의 애니메이션을 직접 구현하고자 할 때 사용
-  requestAnimationFrame
+  console.log("click");
+  // Promise - 주로 서버에서 받아온 데이터를 화면에 표시
+  // Promise 콜백은 마이크로 태스크로 이동
+  Promise.resolve(0)
+  // resolve라는 API를 이용, 0이라는 값을 리턴 
+  .then(() => { // 정상적으로 0이라는 값이 리턴되면
+    console.log("then");
+    onClick();
+  });
 }
 $btn.addEventListener("click", () => {
   onClick();

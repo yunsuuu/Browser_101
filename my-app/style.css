@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 50px;
+  background-color: beige;
+}
+
+.game-header {
+  width: 50px;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  border: 2px solid red;
+}
